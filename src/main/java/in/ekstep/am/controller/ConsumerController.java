@@ -47,7 +47,7 @@ public class ConsumerController {
   private RegisterCredentialStepChainV2 registerCredentialStepChainV2;
 
   @Timed(name = "register-credential-api")
-  @RequestMapping(method = RequestMethod.POST, value = "/v1/consumer/{consumer_name}/credential/register",
+  @PostMapping(value = "/v1/consumer/{consumer_name}/credential/register",
           consumes = "application/json", produces = "application/json")
   public ResponseEntity<RegisterCredentialResponse> registerCredential(@Valid @PathVariable(value = "consumer_name") String userName, @Valid @RequestBody RegisterCredentialRequest request, BindingResult bindingResult) {
 
@@ -75,7 +75,7 @@ public class ConsumerController {
   }
 
   @Timed(name = "register-credential-apiv2")
-  @RequestMapping(method = RequestMethod.POST, value = "/v2/consumer/mobile_device/credential/register",
+  @PostMapping(value = "/v2/consumer/mobile_device/credential/register",
           consumes = "application/json", produces = "application/json")
   public ResponseEntity<RegisterCredentialResponse> registerCredential(@Valid @RequestBody RegisterCredentialRequest request, BindingResult bindingResult) {
     String userName = "mobile_device";
@@ -104,7 +104,7 @@ public class ConsumerController {
 
 
   @Timed(name = "create-consumer-api")
-  @RequestMapping(method = RequestMethod.POST, value = "/v1/consumer/create",
+  @PostMapping(value = "/v1/consumer/create",
       consumes = "application/json", produces = "application/json")
   public ResponseEntity<CreateConsumerResponse> createConsumer(@Valid @RequestBody CreateConsumerRequest request, BindingResult bindingResult) {
 
@@ -131,7 +131,7 @@ public class ConsumerController {
   }
 
   @Timed(name = "grant-consumer-api")
-  @RequestMapping(method = RequestMethod.POST, value = "/v1/consumer/{user_name}/grant",
+  @PostMapping(value = "/v1/consumer/{user_name}/grant",
       consumes = "application/json", produces = "application/json")
   public ResponseEntity<GrantConsumerResponse> grantConsumer(@Valid @PathVariable(value = "user_name") String userName, @Valid @RequestBody GrantConsumerRequest request, BindingResult bindingResult) {
     GrantConsumerResponseBuilder responseBuilder = new GrantConsumerResponseBuilder();
@@ -158,7 +158,7 @@ public class ConsumerController {
   }
 
   @Timed(name = "read-consumer-api")
-  @RequestMapping(method = RequestMethod.POST, value = "/v1/consumer/{user_name}/read",
+  @PostMapping(value = "/v1/consumer/{user_name}/read",
       consumes = "application/json", produces = "application/json")
   public ResponseEntity<ReadConsumerResponse> readConsumer(@Valid @PathVariable(value = "user_name") String userName, @Valid @RequestBody ReadConsumerRequest request, BindingResult bindingResult) {
     ReadConsumerResponseBuilder responseBuilder = new ReadConsumerResponseBuilder();
